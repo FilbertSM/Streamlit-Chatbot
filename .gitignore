@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+myenv/
+venv/
+.DS_Store
+Thumbs.db
+.streamlit/
+node_modules/

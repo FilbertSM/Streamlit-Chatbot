@@ -1,0 +1,37 @@
+# Web Framework
+fastapi
+uvicorn[standard]
+streamlit
+
+# LangChain & Ecosystem
+langchain
+langchain-community
+langchain-core
+langchain-groq
+langchain-huggingface
+# If i want to use gemini add "langchain-gemini" [12:45]
+
+# Vectorstore
+chromadb
+
+# Embeddings
+sentence-transformers
+
+# PDF Parsing
+PyMuPDF # backend for PyPDFLoader via langchain_community
+
+# Environment Variables
+python-dotenv
+
+# Typing & Utilities
+pydantic
+requests
+
+# Logging (optional but recommended)
+loguru
+
+# File Uploads
+aiofiles
+
+# To install the requirements
+# pip install -r requirements.txt
