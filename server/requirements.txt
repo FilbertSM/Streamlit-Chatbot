@@ -2,6 +2,7 @@
 fastapi
 uvicorn[standard]
 streamlit
+plotly
 
 # LangChain & Ecosystem
 langchain
@@ -9,6 +10,9 @@ langchain-community
 langchain-core
 langchain-groq
 langchain-huggingface
+
+langchain-ollama
+langchain-chroma
 # If i want to use gemini add "langchain-gemini" [12:45]
 
 # Vectorstore
@@ -19,6 +23,7 @@ sentence-transformers
 
 # PDF Parsing
 PyMuPDF # backend for PyPDFLoader via langchain_community
+pandas
 
 # Environment Variables
 python-dotenv

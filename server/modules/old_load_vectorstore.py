@@ -20,7 +20,7 @@ def load_vectorstore(uploaded_files):
             f.write(file.file.read())
         file_paths.append(str(save_path))
         
-    # 
+    # Document Loader to Extract text from PDFs
     docs = []
     for path in file_paths:
         loader = PyPDFLoader(path)
