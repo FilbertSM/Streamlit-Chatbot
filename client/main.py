@@ -28,6 +28,7 @@ pages = {
         st.Page("./pages/bca_leader.py", title="BCA Leader+"),
         st.Page("./pages/design_thinking.py", title="Design Thinking"),
         st.Page("./pages/magang_bakti.py", title="Magang Bakti"),
+        
     ],
     "🖥️ Other Chatbot": [
         st.Page("./pages/chatbot_onprem.py", title="🗨️ Chatbot_OnPrem"),
@@ -38,7 +39,7 @@ pages = {
         st.Page("./pages/image_generation.py", title="🖼️ Image Generation"),
         st.Page("./pages/deep_research.py", title="🔬 Deep Research"),
         st.Page("./pages/feedback.py", title="✍🏻 Feedback"),
-        
+        st.Page("./pages/trusted_advisory_chatbot.py", title="Trusted Advisory Chatbot")
     ]
 }
 

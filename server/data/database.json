@@ -1,0 +1,49 @@
+{
+        "Document Name": [
+            "📄 Loan Policy.pdf",
+            "📄 Mortgage Guide.pdf",
+            "📄 Credit Card Terms.pdf",
+            "📄 Savings Account Info.pdf",
+            "📄 AML Compliance.pdf",
+            "📄 KYC Procedure.pdf",
+            "📄 Treasury Report.pdf",
+            "📄 Risk Assessment.pdf",
+            "📄 Investment Portfolio.pdf",
+            "📄 Audit Checklist.pdf",
+            "📄 Customer Service SOP.pdf",
+            "📄 Branch Operations.pdf",
+            "📄 Mobile Banking FAQ.pdf",
+            "📄 Wire Transfer Policy.pdf",
+            "📄 Fraud Detection.pdf",
+            "📄 Financial Statement.pdf",
+            "📄 Employee Handbook.pdf",
+            "📄 Regulatory Update.pdf",
+            "📄 Business Banking.pdf",
+            "📄 ATM Maintenance.pdf"
+        ],
+        "Document ID": [
+            "Loan", "Mortgage", "Credit Card", "Savings", "Compliance",
+            "KYC", "Treasury", "Risk", "Investment", "Audit",
+            "Service", "Operations", "Mobile", "Transfer", "Fraud",
+            "Statement", "Handbook", "Regulatory", "Business", "ATM"
+        ],
+        "Upload Date": [
+            "2023-11-01", "2023-11-02", "2023-11-03", "2023-11-04", "2023-11-05",
+            "2023-11-06", "2023-11-07", "2023-11-08", "2023-11-09", "2023-11-10",
+            "2023-11-11", "2023-11-12", "2023-11-13", "2023-11-14", "2023-11-15",
+            "2023-11-16", "2023-11-17", "2023-11-18", "2023-11-19", "2023-11-20"
+        ],
+        "RAG Status": [
+            "Indexed", "Processing", "Indexed", "Failed", "Indexed",
+            "Processing", "Indexed", "Failed", "Indexed", "Processing",
+            "Indexed", "Failed", "Indexed", "Processing", "Indexed",
+            "Failed", "Indexed", "Processing", "Indexed", "Failed"
+        ],
+        "File Size": [
+            "365.2 MB", "43.9 MB", "48.2 MB", "39.9 MB", "32.5 MB",
+            "8.32 MB", "26.8 MB", "33.3 MB", "56.2 MB", "5.5 MB",
+            "109.7 MB", "21.4 MB", "67.8 MB", "12.3 MB", "92.1 MB",
+            "75.6 MB", "18.9 MB", "54.3 MB", "29.7 MB", "80.5 MB"
+        ],
+        "Actions": ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"]
+    }

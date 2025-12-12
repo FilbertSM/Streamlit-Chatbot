@@ -57,7 +57,7 @@ async def upload_pdfs(files: List[UploadFile] = File(...)):
     
 # Handle Queries
 @app.post("/ask")
-async def ask_question(question: str = Form(...)):
+async def ask_question(question: str = Form(...), role_id: str = Form(...)):
     try:
         logger.info(f"User Query: {question}")
 
@@ -69,7 +69,7 @@ async def ask_question(question: str = Form(...)):
         retriever = get_retriever(vectorstore)
 
         # Chain Query
-        result = query_chain(retriever, llm, question)
+        result = query_chain(retriever, llm, question, role_id)
         logger.info("Query Successful")
         
         return result

@@ -6,5 +6,5 @@ def upload_pdfs_api(files):
     files_payload = [("files", (f.name, f.read(), "application/pdf")) for f in files]
     return requests.post(f"{API_URL}/upload-pdfs", files=files_payload) # Send HTTP Post 
 
-def ask_question_api(question):
-    return requests.post(f"{API_URL}/ask", data={"question": question})
+def ask_question_api(question, role_id):
+    return requests.post(f"{API_URL}/ask", data={"question": question, "role_id": role_id})

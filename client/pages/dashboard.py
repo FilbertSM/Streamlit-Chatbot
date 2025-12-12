@@ -14,6 +14,7 @@ st.divider()
 skill_gap_radar, sentiment_analysis_chart, activity_heatmap = st.columns(3)
 difficulty_chart, attention_table = st.columns(2)
 
+
 #######################
 # Styling
 st.markdown('''
@@ -257,6 +258,5 @@ with attention_table:
 
 #######################
 # Sidebar
-render_sidebar_logo()
 render_sidebar_message()
 logout_button()

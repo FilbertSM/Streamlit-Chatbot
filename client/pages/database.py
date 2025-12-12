@@ -1,4 +1,10 @@
 import streamlit as st
+import pandas as pd
+import json 
+# from components.sidebar.sidebar_logo import render_sidebar_logo
+from components.sidebar.sidebar_message import render_sidebar_message
+from components.sidebar.sidebar_logout import logout_button
+from components.upload import render_uploader
 
 #######################
 # Main App
@@ -16,56 +22,34 @@ with st.container(border=True, height="stretch"):
 
     with st.container(horizontal=True):
         st.text_input(label = "Search", label_visibility = "collapsed", placeholder = "Search", icon = ":material/search:", width = 500)
-        st.selectbox(label = "Filter", label_visibility = "collapsed", options = ["Successful", "Processing", "Failed"], width = 150)
+        st.selectbox(label = "Filter", label_visibility = "collapsed", options = ["Indexed", "Processing", "Failed"], width = 150)
         st.selectbox(label = "All Columns", label_visibility ="collapsed", options = ["All Columns", "Important"], width = 150)
+    
+    df = None
+    with open("../server/data/database.json", "r", encoding="utf-8") as f:
+        if f:            
+            df = df = pd.DataFrame(json.load(f))
 
-    dummy_data = {
-        "Document Name": [
-            ":material/description: Loan Policy.pdf",
-            ":material/description: Mortgage Guide.pdf",
-            ":material/description: Credit Card Terms.pdf",
-            ":material/description: Savings Account Info.pdf",
-            ":material/description: AML Compliance.pdf",
-            ":material/description: KYC Procedure.pdf",
-            ":material/description: Treasury Report.pdf",
-            ":material/description: Risk Assessment.pdf",
-            ":material/description: Investment Portfolio.pdf",
-            ":material/description: Audit Checklist.pdf",
-            ":material/description: Customer Service SOP.pdf",
-            ":material/description: Branch Operations.pdf",
-            ":material/description: Mobile Banking FAQ.pdf",
-            ":material/description: Wire Transfer Policy.pdf",
-            ":material/description: Fraud Detection.pdf",
-            ":material/description: Financial Statement.pdf",
-            ":material/description: Employee Handbook.pdf",
-            ":material/description: Regulatory Update.pdf",
-            ":material/description: Business Banking.pdf",
-            ":material/description: ATM Maintenance.pdf",
-        ],
-        "Document ID": [
-            ":blue[Loan]", ":green[Mortgage]", ":violet[Credit Card]", ":blue[Savings]", ":red[Compliance]",
-            ":green[KYC]", ":violet[Treasury]", ":blue[Risk]", ":green[Investment]", ":violet[Audit]",
-            ":blue[Service]", ":green[Operations]", ":violet[Mobile]", ":blue[Transfer]", ":red[Fraud]",
-            ":green[Statement]", ":violet[Handbook]", ":blue[Regulatory]", ":green[Business]", ":violet[ATM]"
-        ],
-        "Upload Date": [
-            "2023-11-01", "2023-11-02", "2023-11-03", "2023-11-04", "2023-11-05",
-            "2023-11-06", "2023-11-07", "2023-11-08", "2023-11-09", "2023-11-10",
-            "2023-11-11", "2023-11-12", "2023-11-13", "2023-11-14", "2023-11-15",
-            "2023-11-16", "2023-11-17", "2023-11-18", "2023-11-19", "2023-11-20"
-        ],
-        "RAG Status": [
-            ":green[Indexed]", ":yellow[Processing]", ":green[Indexed]", ":red[Failed]", ":green[Indexed]",
-            ":yellow[Processing]", ":green[Indexed]", ":red[Failed]", ":green[Indexed]", ":yellow[Processing]",
-            ":green[Indexed]", ":red[Failed]", ":green[Indexed]", ":yellow[Processing]", ":green[Indexed]",
-            ":red[Failed]", ":green[Indexed]", ":yellow[Processing]", ":green[Indexed]", ":red[Failed]"
-        ],
-        "File Size": [
-            "365.2 MB", "43.9 MB", "48.2 MB", "39.9 MB", "32.5 MB",
-            "8.32 MB", "26.8 MB", "33.3 MB", "56.2 MB", "5.5 MB",
-            "109.7 MB", "21.4 MB", "67.8 MB", "12.3 MB", "92.1 MB",
-            "75.6 MB", "18.9 MB", "54.3 MB", "29.7 MB", "80.5 MB"
-        ],
-        "Actions": list(range(1, 21))
-    }
-    st.table(dummy_data)
+    if df not in st.session_state:
+        st.session_state.df = pd.DataFrame(df)
+    
+    df.index = range(1, len(df) + 1)
+    st.data_editor(
+        df,
+        column_config = {
+            "RAG Status": st.column_config.MultiselectColumn(
+                "RAG Status",
+                options = ["Indexed", "Processing", "Failed"],
+                color = ["#bbf7d1", "#fef18a", "#fecbcb"]
+            ),
+            "Actions": st.column_config.LinkColumn("Actions", display_text = "Edit Here")
+        },
+        height = 500
+    )
+    st.session_state.df.reset_index(drop=True, inplace=True)
+
+#######################
+# Sidebar
+render_sidebar_message()
+render_uploader()
+logout_button()
