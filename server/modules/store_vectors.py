@@ -22,14 +22,12 @@ def store_vectors(texts: list)-> Chroma:
     if os.path.exists(PERSIST_DIR) and os.listdir(PERSIST_DIR):
         vectorstore = Chroma(persist_directory=PERSIST_DIR, embedding_function=embeddings)
         vectorstore.add_documents(texts)
-        vectorstore.persist()
     else: # Else create new Vector Store
         vectorstore = Chroma.from_documents(
             documents = texts,
             embedding = embeddings,
             persist_directory = PERSIST_DIR
         )
-        vectorstore.persist()
 
     return vectorstore
 
