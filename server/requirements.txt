@@ -31,6 +31,8 @@ python-dotenv
 # Typing & Utilities
 pydantic
 requests
+beanie
+motor
 
 # Logging (optional but recommended)
 loguru
