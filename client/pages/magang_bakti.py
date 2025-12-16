@@ -3,38 +3,38 @@ import streamlit as st
 from components.sidebar.sidebar_message import render_sidebar_message
 from components.sidebar.sidebar_logout import logout_button
 
-st.title("Explore all the Trusted Advisory")
+st.title("Explore all the Magang Bakti")
 st.markdown("Practice real-world scenario through immersive roleplays or personalized tutoring.")
 st.text_input(label = "Search for tutors", label_visibility = "collapsed", width = 600, icon = ":material/search:", placeholder = "Search for tutors")
 st.divider()
-st.subheader("Trusted Advisory")
+st.subheader("Magang Bakti")
 row = st.columns(3)
 
 
 dummy_advisor = {
     "Title": [
-        "Product Knowledge",
-        "Business Relationship",
-        "Management",
-        "Risk Assessment",
+        "Customer Services",
+        "Teller",
+        "Customer Relationship Officer",
+        "Personal Customer Relationship",
         "Compliance Training",
-        "Customer Service"
+        "Branch Manager"
     ],
     "Description": [
-        "Master key banking products and services through interactive real-world scenarios.",
-        "Develop essential skills to build trust, communicate effectively, and grow client relationships.",
-        "Enhance leadership and decision-making abilities for team management and strategic planning.",
-        "Identify, evaluate, and mitigate financial risks using industry best practices.",
-        "Stay updated on regulatory requirements and compliance standards through engaging.",
-        "Deliver exceptional customer experiences by learning effective communication."
+        "Deliver exceptional customer experiences by learning effective communication.", # Master key banking products and services through interactive real-world scenarios.
+        "Master cash handling, transaction processing, and customer interaction in a fast-paced environment.",
+        "Build strong relationships with clients about banking solutions.",
+        "Offer personalized financial advice and support to customer.",
+        "Understand and apply banking regulations, anti-money laundering policies.",
+        "Lead branch operations, manage teams, and drive business growth through strategic decision-making."
     ],
     "Image Path": [
+        "./assets/roleplay/CS.png", # PK
+        "./assets/roleplay/T.png",
+        "./assets/roleplay/CRO.png",
+        "./assets/roleplay/PCRO.png",
+        "./assets/roleplay/CTs.png",
         "./assets/roleplay/PK.png",
-        "./assets/roleplay/BR.png",
-        "./assets/roleplay/BL.png",
-        "./assets/roleplay/RA.png",
-        "./assets/roleplay/CT.png",
-        "./assets/roleplay/CS.png",
     ]
 }
     

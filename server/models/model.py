@@ -1,4 +1,5 @@
-from pydantic import BaseModel, Field, List
+from pydantic import BaseModel, Field
+from typing import List
 from beanie import Document
 
 class ValidationRow(BaseModel):

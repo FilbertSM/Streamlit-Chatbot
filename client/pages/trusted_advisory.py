@@ -54,7 +54,7 @@ for start in range(0, num_cards, num_cols):
                     with right:
                         st.markdown(f"### {dummy_advisor['Title'][card_idx]}") 
                         st.markdown(dummy_advisor['Description'][card_idx])
-                        if st.button(label = "Read More", key = [card_idx], width = "stretch", type = "primary"):
+                        if st.button(label = ":speech_balloon: Chat", key = [card_idx], width = "stretch", type = "primary"):
                             st.switch_page("pages/trusted_advisory_chatbot.py")
 
 #######################

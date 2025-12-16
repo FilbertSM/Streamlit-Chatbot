@@ -8,7 +8,7 @@ from components.upload import render_uploader
 
 #######################
 # Main App
-st.header("Dashboard")
+st.title("Database")
 st.markdown(f"""
     <div style='display: flex; justify-content: flex-start; gap: 1rem; font-size: 1.5rem; margin-bottom: 1.5rem;'>
         <span style='background-color: #bbf7d1; color: #16a24b; font-weight: 600; border-radius: 6px; padding: 0.25rem 0.75rem; line-height: 2rem; flex: inline;'>Successfully Indexed: 4,480</span>
@@ -18,7 +18,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 with st.container(border=True, height="stretch"):
-    st.title("RAG Documents Database", width="stretch")
+    st.header("RAG Documents Database", width="stretch")
 
     with st.container(horizontal=True):
         st.text_input(label = "Search", label_visibility = "collapsed", placeholder = "Search", icon = ":material/search:", width = 500)
@@ -44,7 +44,7 @@ with st.container(border=True, height="stretch"):
             ),
             "Actions": st.column_config.LinkColumn("Actions", display_text = "Edit Here")
         },
-        height = 500
+        height = 600
     )
     st.session_state.df.reset_index(drop=True, inplace=True)
 

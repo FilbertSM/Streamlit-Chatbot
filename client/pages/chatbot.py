@@ -29,7 +29,7 @@ Enjoy chatting!
 """)
 
 usecase_radio()
-suggestion_button()
+suggestion_button("How do I process a loan application?")
 
 #######################
 # Session Variable

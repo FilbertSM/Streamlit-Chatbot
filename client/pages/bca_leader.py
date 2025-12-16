@@ -1,62 +1,87 @@
 import streamlit as st
-# from PIL import Image
 from components.sidebar.sidebar_message import render_sidebar_message
+from components.sidebar.sidebar_model import model_selection
+from components.sidebar.sidebar_advance_options import advance_options
 from components.sidebar.sidebar_logout import logout_button
+from components.sidebar.sidebar_enable import enable_button
+from components.usecase_radio import usecase_radio
+from components.suggestion_button import suggestion_button
+from components.sidebar.sidebar_clearsave_button import clearsave_button
+from utils.api import ask_question_api
 
-st.title("Explore all the Trusted Advisory")
-st.markdown("Practice real-world scenario through immersive roleplays or personalized tutoring.")
-st.text_input(label = "Search for tutors", label_visibility = "collapsed", width = 600, icon = ":material/search:", placeholder = "Search for tutors")
-st.divider()
-st.subheader("Trusted Advisory")
-row = st.columns(3)
+st.set_page_config(page_title="GAIA", layout="wide")
 
+#######################
+# Main App
+st.title("BCA Leader+")
+st.markdown("""
+Hello! Welcome to **BCA Leader+**\n\n
 
-dummy_advisor = {
-    "Title": [
-        "Product Knowledge",
-        "Business Relationship",
-        "Management",
-        "Risk Assessment",
-        "Compliance Training",
-        "Customer Service"
-    ],
-    "Description": [
-        "Master key banking products and services through interactive real-world scenarios.",
-        "Develop essential skills to build trust, communicate effectively, and grow client relationships.",
-        "Enhance leadership and decision-making abilities for team management and strategic planning.",
-        "Identify, evaluate, and mitigate financial risks using industry best practices.",
-        "Stay updated on regulatory requirements and compliance standards through engaging.",
-        "Deliver exceptional customer experiences by learning effective communication."
-    ],
-    "Image Path": [
-        "./assets/roleplay/PK.png",
-        "./assets/roleplay/BR.png",
-        "./assets/roleplay/BL.png",
-        "./assets/roleplay/RA.png",
-        "./assets/roleplay/CT.png",
-        "./assets/roleplay/CS.png",
-    ]
-}
-    
-num_cols = 3
-num_cards = len(dummy_advisor["Title"])
+A few tips:\n\n
 
-for start in range(0, num_cards, num_cols):
-    row = st.columns(num_cols)
-    for idx, col in enumerate(row):
-        card_idx = start + idx
-        if card_idx < num_cards:
-            with col:
-                with st.container(border = True, height = "stretch"):
-                    left, right = st.columns(2)
-                    with left:
-                        st.image(image = dummy_advisor["Image Path"][card_idx])
-                    with right:
-                        st.markdown(f"### {dummy_advisor['Title'][card_idx]}") 
-                        st.markdown(dummy_advisor['Description'][card_idx])
-                        st.button(label = "Read More", key = [card_idx], width = "stretch", type = "primary")
+1. **Upload relevant banking documents** (e.g., policies, procedures, forms) using the sidebar before starting a chat.
+2. **Ask questions related to banking operations**, such as account management, loan processing, compliance, or customer service.
+3. **Download your chat history** anytime using the sidebar for future reference or reporting.
+4. **Use the feedback button** to report issues, suggest improvements, or request new banking features.
+5. **Your data is secure and confidential**—only you can access your uploaded documents and chat history.
+
+Enjoy using BCA Leader+ to assist with your daily banking tasks!
+""")
+
+usecase_radio()
+suggestion_button("What's BCA Leader+?")
+
+#######################
+# Session Variable
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+# Render existing chat history
+for msg in st.session_state.messages:
+    st.chat_message(msg["role"]).markdown(msg["content"])
+
+# Chatbot
+user_input = st.chat_input("Hi! Ask me anything...")
+role_id = "chatbot"
+if user_input:
+    # Show user input to chat
+    st.chat_message("user").markdown(user_input)
+    st.session_state.messages.append({"role": "user", "content": user_input})
+
+    # API Call to Backend
+    response = ask_question_api(user_input, role_id)
+
+    if response.status_code == 200:
+        # Extract the answer and sources
+        data = response.json()
+        answer = data
+        # sources = data.get("sources", [])
+        
+        # Display AI Response
+        st.chat_message("assistant").markdown(answer)
+        # placeholder = st.empty()
+        # displayed = ""
+        # for char in answer:
+        #     displayed += char
+        #     placeholder.markdown(displayed)
+        #     time.sleep(0.005)
+
+        # Adding sources to on the answer if exist
+        # if sources:
+        #     st.markdown("📃 **Sources:**")
+        #     for src in sources:
+        #         st.markdown(f"- `{src}`")
+        
+        # Save AI Response in Chat History
+        st.session_state.messages.append({"role": "assistant", "content": answer})
+    else:
+        st.error(f"Error: {response.text}")
 
 #######################
 # Sidebar
 render_sidebar_message()
+model_selection()
+clearsave_button(user_input)
+enable_button()
+advance_options()
 logout_button()
