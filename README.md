@@ -41,7 +41,7 @@ gaia/
 └── README.md
 ```
 
----
+
 
 ## Features
 
@@ -52,7 +52,7 @@ gaia/
 - **Roleplay & Scenario Assets:** Prebuilt assets for interactive role-based experiences.
 - **Secure & Configurable:** Environment-based configs and user session management.
 
----
+
 
 ## Installation & Local Setup
 
@@ -103,7 +103,7 @@ cd client
 streamlit run main.py
 ```
 
----
+
 
 ## Usage
 
@@ -111,7 +111,7 @@ streamlit run main.py
 - Interact with various chatbots, upload documents, and explore dashboards.
 - Backend APIs and models are managed via the server.
 
----
+
 
 ## Configuration
 
@@ -119,7 +119,7 @@ streamlit run main.py
 - **Server:** Adjust db.py and other config files for database, model, and storage options.
 - **Assets:** Place custom images or roleplay assets in assets.
 
----
+
 
 ## Development
 
@@ -128,19 +128,19 @@ streamlit run main.py
 - Backend logic and models go in models and modules.
 - Logging is handled via logger.py.
 
----
+
 
 ## Contributing
 
 Pull requests and issues are welcome! Please open an issue to discuss major changes or new features.
 
----
+
 
 ## License
 
 This project is licensed under the terms of the LICENSE file.
 
----
+
 
 **Author:**  
 Filbert Sembiring Meliala  
