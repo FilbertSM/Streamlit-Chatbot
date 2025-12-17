@@ -11,18 +11,6 @@
   </a>
 </p> -->
 
-## Table of Contents
-
-- Project Structure
-- Features
-- Installation & Local Setup
-- Usage
-- Configuration
-- Development
-- Contributing
-- License
-
----
 
 ## Project Structure
 
