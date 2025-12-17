@@ -1,8 +1,15 @@
-# GAIA
+<h1 align="center">
+  GAIA
+</h1>
+<p align="center">
+  Gaia is a modular, extensible platform designed for advanced chatbot, data analysis, and AI-driven applications. It features a robust client-server architecture, supporting multimodal interactions, role-based workflows, and seamless integration with custom models and data sources.
+</p>
 
-Gaia is a modular, extensible platform designed for advanced chatbot, data analysis, and AI-driven applications. It features a robust client-server architecture, supporting multimodal interactions, role-based workflows, and seamless integration with custom models and data sources.
-
----
+<!-- <p align="center">
+  <a href="https://app.netlify.com/sites/brittanychiang/deploys" target="_blank">
+    <img src="https://api.netlify.com/api/v1/badges/1963b488-7b78-48c9-9e2d-6fb5e47ab3af/deploy-status" alt="Netlify Status" />
+  </a>
+</p> -->
 
 ## Table of Contents
 
