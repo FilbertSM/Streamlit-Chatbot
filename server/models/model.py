@@ -40,3 +40,10 @@ class Message(Document):
     content: str = Field(..., description="Content of the message")
     timezone_jkt = timezone(timedelta(hours=7))
     created_at: datetime = datetime.now(tz=timezone_jkt)
+
+    class Settings:
+        collection_name="messages"
+
+class Message(BaseModel):
+    role: str = Field(..., description="Role of the message sender")
+    content: str = Field(..., description="Content of the message")
