@@ -10,4 +10,4 @@ MONGO_URI = os.getenv("MONGO_URI")
 
 async def init_db():
     client = AsyncMongoClient(MONGO_URI)
-    await init_beanie(database=client.blog, document_models=[User, Message])
+    await init_beanie(database=client.db_name, document_models=[User, Message])
