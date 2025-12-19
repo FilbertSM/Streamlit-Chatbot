@@ -30,9 +30,14 @@ class UserRegister(BaseModel):
     password: str = Field(..., description="Password of the user")
     confirm_password: str = Field(..., description="Confirmation Password")
 
-class Login(BaseModel):
+class UserLogin(BaseModel):
     name: str = Field(..., min_length=3, max_length=50, description="Name of the user")
     password: str = Field(..., description="Password of the user")
+
+class UserChangePW(BaseModel):
+    name: str = Field(..., min_length=3, max_length=50, description="Name of the user")
+    old_password: str = Field(..., description="Old Password of the user")
+    new_password: str = Field(..., description="New Password of the user")
 
 # Message Models
 class Message(Document):
@@ -44,6 +49,6 @@ class Message(Document):
     class Settings:
         collection_name="messages"
 
-class Message(BaseModel):
+class SendMessage(BaseModel):
     role: str = Field(..., description="Role of the message sender")
     content: str = Field(..., description="Content of the message")

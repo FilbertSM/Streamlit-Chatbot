@@ -7,6 +7,7 @@ from modules.pdf_handlers import save_uploaded_files, load_documents, split_docu
 from modules.store_vectors import store_vectors, load_vectors, get_retriever
 from modules.query_chain import query_chain
 from langchain_ollama.llms import OllamaLLM
+from models.model import User, UserRegister, UserLogin, Message, SendMessage
 
 app = FastAPI(title="GAIA")
 
@@ -56,6 +57,54 @@ async def upload_pdfs(files: List[UploadFile] = File(...)):
         return JSONResponse(status_code=500, content={"error": str(e)})
     
 # Handle Queries
+@app.post("/ask")
+async def ask_question(question: str = Form(...), role_id: str = Form(...)):
+    try:
+        logger.info(f"User Query: {question}")
+
+        # Prepare LLM
+        llm = OllamaLLM(model="qwen3-vl:235b-cloud", base_url="http://localhost:11434")
+
+        # Prepare Retriever
+        vectorstore = load_vectors()
+        retriever = get_retriever(vectorstore)
+
+        # Chain Query
+        result = query_chain(retriever, llm, question, role_id)
+        logger.info("Query Successful")
+        
+        return result
+    except Exception as e:
+        logger.exception("Error during processing question")
+        return JSONResponse(status_code=500, content={"error": str(e)})
+
+# ===== User Endpoints =====
+# Get All Users
+@app.get("/user", response_model=List[User])
+async def get_users():
+
+# Get Single User
+@app.get("/user/{user_id}", response_model=User)
+async def get_user(user_id: str):
+
+# User Register
+@app.post("/user/register", response_model=User)
+async def register_user(user_regist: UserRegister):
+
+# User Login
+@app.post("/user/login", response_model=User)
+async def login_user(user_login: UserLogin):
+
+# User Logout
+@app.post("/user/logout", response_model="")
+async def logout_user(...):
+
+# User Change Password
+@app.put("/user/{user_id}")
+async def change_password(user_id: str):
+
+# ===== Message Endpoints =====
+# Crete Message
 @app.post("/ask")
 async def ask_question(question: str = Form(...), role_id: str = Form(...)):
     try:
